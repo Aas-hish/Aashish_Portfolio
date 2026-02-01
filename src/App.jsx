@@ -31,7 +31,7 @@ function App() {
 
             <Navbar />
 
-            <main className="relative z-10 pt-20">
+            <main className="relative pt-20">
               <AnimatedRoutes />
             </main>
 
