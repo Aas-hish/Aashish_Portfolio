@@ -7,6 +7,8 @@ import ScrollReveal, { ParallaxCard } from '../components/ScrollReveal';
 
 import profileImg from '../assets/Aashish.png';
 
+import ScrollFloat from '../components/ScrollFloat';
+
 const Home = () => {
     return (
         <div className="overflow-hidden bg-slate-950">
@@ -23,6 +25,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center">
 
                         {/* Left Column: Introduction & CTA */}
+                        {/* ... (existing code) ... */}
                         <div className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1 relative z-20 -mt-28 lg:mt-0">
                             <ScrollReveal width="100%">
                                 <div className="inline-block px-3 py-1 mb-4 border border-cyan-500/30 rounded-full bg-cyan-500/5 backdrop-blur-sm">
@@ -158,7 +161,17 @@ const Home = () => {
             <section className="py-24 bg-slate-900/30">
                 <div className="container mx-auto px-6">
                     <ScrollReveal width="100%" className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">What I Do</h2>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            containerClassName="mb-4"
+                            textClassName="text-3xl md:text-4xl font-bold text-white"
+                        >
+                            What I Do
+                        </ScrollFloat>
                         <p className="text-slate-400 max-w-2xl mx-auto">Combining technical expertise with creative design to build scalable solutions.</p>
                     </ScrollReveal>
 
@@ -190,7 +203,17 @@ const Home = () => {
                 <div className="container mx-auto px-6">
                     <div className="flex justify-between items-end mb-16">
                         <ScrollReveal>
-                            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Featured Projects</h2>
+                            <ScrollFloat
+                                animationDuration={1}
+                                ease='back.inOut(2)'
+                                scrollStart='center bottom+=50%'
+                                scrollEnd='bottom bottom-=40%'
+                                stagger={0.03}
+                                containerClassName="mb-4"
+                                textClassName="text-3xl md:text-4xl font-bold text-white"
+                            >
+                                Featured Projects
+                            </ScrollFloat>
                             <p className="text-slate-400">Some of my recent work</p>
                         </ScrollReveal>
                         <Link to="/projects" className="hidden md:flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium group">

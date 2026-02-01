@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, HelpCircle, ChevronDown } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
+import ScrollFloat from '../components/ScrollFloat';
 
 const ContactItem = ({ icon: Icon, title, value, href, delay }) => (
     <ScrollReveal delay={delay} width="100%">
@@ -73,7 +74,30 @@ const Contact = () => {
     return (
         <div className="pt-20 pb-20 container mx-auto px-6">
             <ScrollReveal width="100%" className="text-center mb-16">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">Get In <span className="text-cyan-400">Touch</span></h1>
+                <div className="text-4xl md:text-6xl font-bold mb-6">
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                        textClassName="text-white"
+                        containerClassName="inline-block mr-2"
+                    >
+                        Get In
+                    </ScrollFloat>
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                        textClassName="text-cyan-400"
+                        containerClassName="inline-block"
+                    >
+                        Touch
+                    </ScrollFloat>
+                </div>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                     Let's discuss opportunities, collaborations, or just have a friendly chat about technology.
                 </p>
@@ -83,7 +107,17 @@ const Contact = () => {
                 {/* Contact Info */}
                 <div>
                     <ScrollReveal width="100%">
-                        <h3 className="text-2xl font-bold mb-8">Contact Information</h3>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            containerClassName="mb-8"
+                            textClassName="text-2xl font-bold text-white"
+                        >
+                            Contact Information
+                        </ScrollFloat>
                     </ScrollReveal>
                     <div className="space-y-4 mb-12">
                         <ContactItem
@@ -110,7 +144,17 @@ const Contact = () => {
                     </div>
 
                     <ScrollReveal width="100%">
-                        <h3 className="text-2xl font-bold mb-6">Frequently Asked Questions</h3>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            containerClassName="mb-6"
+                            textClassName="text-2xl font-bold text-white"
+                        >
+                            Frequently Asked Questions
+                        </ScrollFloat>
                     </ScrollReveal>
                     <div className="space-y-4">
                         {faqData.map((f, i) => (
@@ -124,7 +168,17 @@ const Contact = () => {
                 {/* Form */}
                 <ScrollReveal delay={0.2} width="100%" className="h-full">
                     <div className="bg-white/5 border border-white/5 p-8 rounded-2xl h-full">
-                        <h3 className="text-2xl font-bold mb-6">Send Message</h3>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            containerClassName="mb-6"
+                            textClassName="text-2xl font-bold text-white"
+                        >
+                            Send Message
+                        </ScrollFloat>
                         <form className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>

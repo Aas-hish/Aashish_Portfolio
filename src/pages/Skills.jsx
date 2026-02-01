@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code, Server, Database, Terminal, Cpu, Users } from 'lucide-react';
 import ScrollReveal, { ParallaxCard } from '../components/ScrollReveal';
+import ScrollFloat from '../components/ScrollFloat';
 
 const SkillBar = ({ name, percentage, color }) => (
+    // ... (SkillBar and SkillCategory remain the same)
     <div className="mb-6">
         <div className="flex justify-between items-center mb-2">
             <span className="font-semibold text-slate-200">{name}</span>
@@ -116,7 +118,30 @@ const Skills = () => {
     return (
         <div className="pt-20 pb-20 container mx-auto px-6">
             <ScrollReveal width="100%" className="text-center mb-16">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">Technical <span className="text-cyan-400">Expertise</span></h1>
+                <div className="text-4xl md:text-6xl font-bold mb-6">
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                        textClassName="text-white"
+                        containerClassName="inline-block mr-2"
+                    >
+                        Technical
+                    </ScrollFloat>
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                        textClassName="text-cyan-400"
+                        containerClassName="inline-block"
+                    >
+                        Expertise
+                    </ScrollFloat>
+                </div>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                     A comprehensive overview of my technical skills, tools, and proficiencies.
                 </p>
@@ -131,7 +156,17 @@ const Skills = () => {
 
             {/* Certifications */}
             <ScrollReveal width="100%">
-                <h2 className="text-3xl font-bold mb-10 text-center">Certifications</h2>
+                <ScrollFloat
+                    animationDuration={1}
+                    ease='back.inOut(2)'
+                    scrollStart='center bottom+=50%'
+                    scrollEnd='bottom bottom-=40%'
+                    stagger={0.03}
+                    containerClassName="mb-10 text-center"
+                    textClassName="text-3xl font-bold text-white"
+                >
+                    Certifications
+                </ScrollFloat>
             </ScrollReveal>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
                 <CertificationCard
@@ -156,7 +191,17 @@ const Skills = () => {
 
             {/* Soft Skills */}
             <ScrollReveal width="100%">
-                <h2 className="text-3xl font-bold mb-10 text-center">Soft Skills</h2>
+                <ScrollFloat
+                    animationDuration={1}
+                    ease='back.inOut(2)'
+                    scrollStart='center bottom+=50%'
+                    scrollEnd='bottom bottom-=40%'
+                    stagger={0.03}
+                    containerClassName="mb-10 text-center"
+                    textClassName="text-3xl font-bold text-white"
+                >
+                    Soft Skills
+                </ScrollFloat>
             </ScrollReveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {softSkills.map((skill, i) => (

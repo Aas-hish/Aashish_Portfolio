@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Award, Heart, User, Calendar } from 'lucide-react';
 import ScrollReveal, { ParallaxCard } from '../components/ScrollReveal';
+import ScrollFloat from '../components/ScrollFloat';
 
 const About = () => {
     return (
@@ -9,7 +10,30 @@ const About = () => {
             {/* Hero */}
             <section className="container mx-auto px-6 mb-20">
                 <ScrollReveal width="100%" className="text-center max-w-3xl mx-auto">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6">About <span className="text-cyan-400">Me</span></h1>
+                    <div className="text-4xl md:text-6xl font-bold mb-6">
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            textClassName="text-white"
+                            containerClassName="inline-block mr-2"
+                        >
+                            About
+                        </ScrollFloat>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            textClassName="text-cyan-400"
+                            containerClassName="inline-block"
+                        >
+                            Me
+                        </ScrollFloat>
+                    </div>
                     <p className="text-xl text-slate-400 leading-relaxed">
                         I'm a final year Computer Science student with a deep love for technology and innovation.
                         Driving the future through code, creativity, and continuous learning.
@@ -32,11 +56,21 @@ const About = () => {
                     </ParallaxCard>
 
                     <ScrollReveal width="100%" delay={0.2}>
-                        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                        <div className="flex items-center gap-3 mb-6">
                             <User className="text-purple-400" size={32} />
-                            My Story
-                        </h2>
+                            <ScrollFloat
+                                animationDuration={1}
+                                ease='back.inOut(2)'
+                                scrollStart='center bottom+=50%'
+                                scrollEnd='bottom bottom-=40%'
+                                stagger={0.03}
+                                textClassName="text-3xl font-bold text-white"
+                            >
+                                My Story
+                            </ScrollFloat>
+                        </div>
                         <div className="space-y-6 text-slate-300 leading-relaxed">
+                            {/* ... Content ... */}
                             <p>
                                 My journey in computer science began with a curiosity about how things work behind the scenes of the digital world.
                                 Since then, I've dived deep into programming, algorithms, and software engineering principles.
@@ -73,13 +107,23 @@ const About = () => {
             {/* Education Timeline */}
             <section className="container mx-auto px-6 mb-24">
                 <ScrollReveal width="100%">
-                    <h2 className="text-3xl font-bold mb-12 text-center flex justify-center items-center gap-3">
+                    <div className="mb-12 text-center flex justify-center items-center gap-3">
                         <BookOpen className="text-cyan-400" size={32} />
-                        Education Journey
-                    </h2>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            textClassName="text-3xl font-bold text-white"
+                        >
+                            Education Journey
+                        </ScrollFloat>
+                    </div>
                 </ScrollReveal>
 
                 <div className="max-w-3xl mx-auto relative pl-8 border-l border-white/10 space-y-12">
+                    {/* ... Education items ... */}
                     {/* Item 1 */}
                     <ScrollReveal width="100%" className="relative">
                         <span className="absolute -left-[41px] top-0 h-5 w-5 rounded-full border-4 border-slate-950 bg-cyan-500" />
@@ -118,10 +162,19 @@ const About = () => {
             {/* Interests */}
             <section className="container mx-auto px-6">
                 <ScrollReveal width="100%">
-                    <h2 className="text-3xl font-bold mb-12 text-center flex justify-center items-center gap-3">
+                    <div className="mb-12 text-center flex justify-center items-center gap-3">
                         <Heart className="text-red-400" size={32} />
-                        What I Love
-                    </h2>
+                        <ScrollFloat
+                            animationDuration={1}
+                            ease='back.inOut(2)'
+                            scrollStart='center bottom+=50%'
+                            scrollEnd='bottom bottom-=40%'
+                            stagger={0.03}
+                            textClassName="text-3xl font-bold text-white"
+                        >
+                            What I Love
+                        </ScrollFloat>
+                    </div>
                 </ScrollReveal>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[

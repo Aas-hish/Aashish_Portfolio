@@ -8,6 +8,7 @@ import ColorRevealSpotlight from './components/ColorRevealSpotlight';
 import MouseSpotlight from './components/MouseSpotlight';
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScroll from './components/SmoothScroll';
+import Cursor from './components/Cursor';
 import AnimatedRoutes from './components/AnimatedRoutes';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-cyan-500 selection:text-white font-sans overflow-x-hidden animate-in fade-in duration-700">
             <ColorRevealSpotlight />
             <MouseSpotlight />
+            <Cursor />
 
             {/* Background Gradients */}
             <div className="fixed inset-0 z-0 pointer-events-none">
@@ -33,7 +35,7 @@ function App() {
 
             <Navbar />
 
-            <main className="relative pt-20">
+            <main className="relative pt-20 z-10 bg-slate-950">
               <AnimatedRoutes />
             </main>
 

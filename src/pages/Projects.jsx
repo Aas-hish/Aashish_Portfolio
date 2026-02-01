@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Code, Filter } from 'lucide-react';
 import ScrollReveal, { ParallaxCard } from '../components/ScrollReveal';
+import ScrollFloat from '../components/ScrollFloat';
 
 const projectsData = [
+    // ... (projects data remains the same)
     {
         id: 1,
         title: 'RVS Hospital Website',
@@ -88,7 +90,30 @@ const Projects = () => {
     return (
         <div className="pt-20 pb-20 container mx-auto px-6">
             <ScrollReveal width="100%" className="text-center mb-16">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">My <span className="text-cyan-400">Projects</span></h1>
+                <div className="text-4xl md:text-6xl font-bold mb-6">
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                        textClassName="text-white"
+                        containerClassName="inline-block mr-2"
+                    >
+                        My
+                    </ScrollFloat>
+                    <ScrollFloat
+                        animationDuration={1}
+                        ease='back.inOut(2)'
+                        scrollStart='center bottom+=50%'
+                        scrollEnd='bottom bottom-=40%'
+                        stagger={0.03}
+                        textClassName="text-cyan-400"
+                        containerClassName="inline-block"
+                    >
+                        Projects
+                    </ScrollFloat>
+                </div>
                 <p className="text-xl text-slate-400 max-w-2xl mx-auto">
                     A showcase of my technical skills and creative problem-solving abilities across web and mobile platforms.
                 </p>
