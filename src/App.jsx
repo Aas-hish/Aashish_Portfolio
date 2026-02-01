@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 import TerminalSplash from './components/TerminalSplash';
+import ColorRevealSpotlight from './components/ColorRevealSpotlight';
 import MouseSpotlight from './components/MouseSpotlight';
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScroll from './components/SmoothScroll';
@@ -21,6 +22,7 @@ function App() {
           <ScrollToTop />
           <SmoothScroll />
           <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-cyan-500 selection:text-white font-sans overflow-x-hidden animate-in fade-in duration-700">
+            <ColorRevealSpotlight />
             <MouseSpotlight />
 
             {/* Background Gradients */}

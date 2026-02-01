@@ -23,10 +23,10 @@ const MouseSpotlight = () => {
     return (
         <motion.div
             className="fixed top-0 left-0 w-full h-full pointer-events-none z-[5] overflow-hidden"
-            style={{ opacity: 0.6 }}
+            style={{ opacity: 0.7 }}
         >
             <motion.div
-                className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 blur-3xl"
+                className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-r from-cyan-500/15 to-purple-500/15 blur-3xl"
                 style={{
                     left: springX,
                     top: springY,
