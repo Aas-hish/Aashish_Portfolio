@@ -7,8 +7,7 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [displayText, setDisplayText] = useState('');
-    const fullText = 'Aashish.';
-    const [isDeleting, setIsDeleting] = useState(false);
+    const fullText = 'Aashish';
     const location = useLocation();
 
     useEffect(() => {
@@ -19,37 +18,41 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Infinite Bidirectional Typing effect logic
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+    const [typingSpeed, setTypingSpeed] = useState(150);
+
+    // Infinite Loop Typing Effect
     useEffect(() => {
-        let timer;
         const handleTyping = () => {
             const currentText = fullText;
 
+            // Determine if we are typing or deleting
             if (isDeleting) {
                 setDisplayText(prev => currentText.substring(0, prev.length - 1));
+                setTypingSpeed(100); // Faster deleting speed
             } else {
                 setDisplayText(prev => currentText.substring(0, prev.length + 1));
+                setTypingSpeed(150); // Normal typing speed
             }
 
+            // Logic for switching states
             if (!isDeleting && displayText === currentText) {
-                setTimeout(() => setIsDeleting(true), 1500); // Pause at end
+                // Finished typing, pause before deleting
+                setTypingSpeed(2000); // 2s pause at end
+                setIsDeleting(true);
             } else if (isDeleting && displayText === '') {
-                setIsDeleting(false); // Pause at start handled by next tick naturally or add delay if needed
+                // Finished deleting, pause before re-typing
+                setIsDeleting(false);
+                setLoopNum(loopNum + 1);
+                setTypingSpeed(500); // 0.5s pause before starting again
             }
         };
 
-        // Speed control
-        const typingSpeed = isDeleting ? 100 : 200;
-
-        if (!isDeleting && displayText === fullText) {
-            // Already handled by timeout above, but we need to clear interval/timeout logic to avoid race conditions.
-            // Actually, a simpler standard approach:
-        } else {
-            timer = setTimeout(handleTyping, typingSpeed);
-        }
+        const timer = setTimeout(handleTyping, typingSpeed);
 
         return () => clearTimeout(timer);
-    }, [displayText, isDeleting]);
+    }, [displayText, isDeleting, loopNum]);
 
     // Close mobile menu when route changes
     useEffect(() => {
@@ -76,7 +79,14 @@ const Navbar = () => {
                     {/* Logo with Typing Effect */}
                     <Link to="/" className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 hover:opacity-80 transition-opacity flex items-center">
                         {displayText}
-                        <span className="text-cyan-400 animate-pulse ml-1">_</span>
+                        <motion.span
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                            className="text-cyan-400 ml-1 inline-block"
+                        >
+                            _
+                        </motion.span>
                     </Link>
 
                     {/* Desktop Nav */}

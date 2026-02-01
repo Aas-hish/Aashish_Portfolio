@@ -5,11 +5,11 @@ const ColorRevealSpotlight = () => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Initialize at center
+    // Initialize over the face (approx 75% width, 40% height)
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            mouseX.set(window.innerWidth / 2);
-            mouseY.set(window.innerHeight / 2);
+            mouseX.set(window.innerWidth * 0.75);
+            mouseY.set(window.innerHeight * 0.4);
         }
     }, []);
 

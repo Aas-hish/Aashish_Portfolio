@@ -6,7 +6,7 @@ const ScrollReveal = ({ children, width = "fit-content", delay = 0, className = 
     const isInView = useInView(ref, { once: true, margin: "-50px" });
 
     return (
-        <div ref={ref} style={{ width, position: 'relative', overflow: 'hidden' }} className={className}>
+        <div ref={ref} style={{ width, position: 'relative' }} className={className}>
             <motion.div
                 variants={{
                     hidden: { opacity: 0, y: 75 },

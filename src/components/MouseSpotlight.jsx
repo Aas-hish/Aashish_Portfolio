@@ -5,6 +5,12 @@ const MouseSpotlight = () => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
+    // Initialize position over the "face" area (approx 75% width, 40% height)
+    useEffect(() => {
+        mouseX.set(window.innerWidth * 0.75);
+        mouseY.set(window.innerHeight * 0.4);
+    }, []);
+
     // Smooth spring animation for the spotlight
     const springConfig = { damping: 25, stiffness: 150 };
     const springX = useSpring(mouseX, springConfig);

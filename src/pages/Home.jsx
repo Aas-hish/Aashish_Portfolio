@@ -45,29 +45,59 @@ const Home = () => {
                                 </p>
                             </ScrollReveal>
 
-                            <ScrollReveal width="100%" delay={0.2} className="flex flex-row flex-nowrap gap-4 justify-center lg:justify-start mb-12">
-                                <Link
-                                    to="/contact"
-                                    className="px-9 py-5 bg-cyan-400 text-slate-900 font-bold text-base tracking-wide hover:bg-cyan-300 transition-all hover:scale-105 rounded-full shadow-lg shadow-cyan-400/20"
-                                >
-                                    Let's Talk
-                                </Link>
-                                <Link
-                                    to="/projects"
-                                    className="px-9 py-5 border border-white/10 bg-white/5 text-white font-bold text-base tracking-wide hover:bg-white/10 transition-all hover:scale-105 rounded-full backdrop-blur-md flex items-center gap-2"
-                                >
-                                    View Work <ArrowRight size={18} />
-                                </Link>
+                            <ScrollReveal width="100%" delay={0.2} className="mb-12">
+                                <div className="flex flex-row flex-nowrap gap-4 justify-center lg:justify-start">
+                                    <Link
+                                        to="/contact"
+                                        className="px-9 py-5 bg-cyan-400 text-slate-900 font-bold text-base tracking-wide hover:bg-cyan-300 transition-all hover:scale-105 rounded-full shadow-lg shadow-cyan-400/20"
+                                    >
+                                        Let's Talk
+                                    </Link>
+                                    <Link
+                                        to="/projects"
+                                        className="px-9 py-5 border border-white/10 bg-white/5 text-white font-bold text-base tracking-wide hover:bg-white/10 transition-all hover:scale-105 rounded-full backdrop-blur-md flex items-center gap-2"
+                                    >
+                                        View Work <ArrowRight size={18} />
+                                    </Link>
+                                </div>
                             </ScrollReveal>
 
                             <ScrollReveal width="100%" delay={0.3} className="flex gap-8 pt-8 border-t border-white/5 w-full justify-center lg:justify-start">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 font-bold text-[10px] shadow-sm relative z-30" title="JavaScript">JS</div>
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 font-bold text-[10px] -ml-4 shadow-sm relative z-20" title="TypeScript">TS</div>
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 font-bold text-[10px] -ml-4 shadow-sm relative z-10" title="React">RC</div>
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 font-bold text-[10px] -ml-4 shadow-sm relative z-0" title="Next.js">PY</div>
-                                    <div className="w-10 h-10 rounded-full bg-slate-900 border border-white/10 flex items-center justify-center text-cyan-400 font-bold text-[10px] -ml-4 shadow-sm relative z-0" title="React Native">RN</div>
-                                    <span className="text-xs text-slate-500 font-medium ml-2">Tech Stack</span>
+                                <div className="flex flex-wrap items-center pl-4">
+                                    {[
+                                        { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+                                        { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+                                        { name: 'React', url: 'https://react.dev/' },
+                                        { name: 'Next.js', url: 'https://nextjs.org/' },
+                                        { name: 'React Native', url: 'https://reactnative.dev/' }
+                                    ].map((tech, index) => (
+                                        <motion.a
+                                            key={index}
+                                            href={tech.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            initial={{ opacity: 0, x: -50, rotate: -10 }}
+                                            animate={{ opacity: 1, x: 0, rotate: 0 }}
+                                            transition={{
+                                                duration: 0.5,
+                                                delay: 0.5 + (index * 0.1),
+                                                type: "spring",
+                                                stiffness: 100
+                                            }}
+                                            whileHover={{
+                                                scale: 1.2,
+                                                zIndex: 100,
+                                                y: -10,
+                                                rotate: Math.random() < 0.5 ? -2 : 2,
+                                                transition: { duration: 0.2 }
+                                            }}
+                                            className="px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-cyan-400 text-xs font-bold shadow-lg shadow-black/50 relative hover:shadow-cyan-500/20 -ml-4 first:ml-0 cursor-pointer block"
+                                            style={{ zIndex: 10 - index }}
+                                        >
+                                            {tech.name}
+                                        </motion.a>
+                                    ))}
+                                    <span className="text-xs text-slate-500 font-medium ml-4">Tech Stack</span>
                                 </div>
                             </ScrollReveal>
                         </div>
