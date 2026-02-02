@@ -120,20 +120,22 @@ const Projects = () => {
             </ScrollReveal>
 
             {/* Filters */}
-            <ScrollReveal width="100%" delay={0.2} className="flex flex-wrap justify-center gap-4 mb-16">
-                {[
-                    { id: 'all', label: 'All Projects' },
-                    { id: 'web', label: 'Web Development' },
-                    { id: 'mobile', label: 'Mobile Apps' },
-                    { id: 'other', label: 'Others' }
-                ].map(f => (
-                    <FilterButton
-                        key={f.id}
-                        active={filter === f.id}
-                        label={f.label}
-                        onClick={() => setFilter(f.id)}
-                    />
-                ))}
+            <ScrollReveal width="100%" delay={0.2} className="mb-16">
+                <div className="flex flex-wrap justify-center gap-4">
+                    {[
+                        { id: 'all', label: 'All Projects' },
+                        { id: 'web', label: 'Web Development' },
+                        { id: 'mobile', label: 'Mobile Apps' },
+                        { id: 'other', label: 'Others' }
+                    ].map(f => (
+                        <FilterButton
+                            key={f.id}
+                            active={filter === f.id}
+                            label={f.label}
+                            onClick={() => setFilter(f.id)}
+                        />
+                    ))}
+                </div>
             </ScrollReveal>
 
             {/* Grid */}

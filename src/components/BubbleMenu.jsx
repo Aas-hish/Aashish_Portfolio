@@ -78,7 +78,7 @@ export default function BubbleMenu({
         'flex items-center justify-between',
         'gap-4 px-8',
         'pointer-events-none',
-        'z-[1001]',
+        'z-[9990]',
         className
     ]
         .filter(Boolean)
@@ -98,7 +98,9 @@ export default function BubbleMenu({
         if (!overlay || !bubbles.length) return;
 
         if (isMenuOpen) {
-            gsap.set(overlay, { display: 'flex' });
+            // Fade in the overlay background smoothly
+            gsap.fromTo(overlay, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.3 });
+
             gsap.killTweensOf([...bubbles, ...labels]);
             gsap.set(bubbles, { scale: 0, transformOrigin: '50% 50%' });
             gsap.set(labels, { y: 24, autoAlpha: 0 });
@@ -132,12 +134,12 @@ export default function BubbleMenu({
                 duration: 0.2,
                 ease: 'power3.in'
             });
+            gsap.to(overlay, { autoAlpha: 0, duration: 0.2 });
             gsap.to(bubbles, {
                 scale: 0,
                 duration: 0.2,
                 ease: 'power3.in',
                 onComplete: () => {
-                    gsap.set(overlay, { display: 'none' });
                     setShowOverlay(false);
                 }
             });
@@ -301,6 +303,7 @@ export default function BubbleMenu({
                     ].join(' ')}
                     aria-hidden={!isMenuOpen}
                     onClick={handleToggle}
+                    style={{ opacity: 0 }}
                 >
                     <ul
                         className={[

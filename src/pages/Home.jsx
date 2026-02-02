@@ -66,41 +66,43 @@ const Home = () => {
                             </ScrollReveal>
 
                             <ScrollReveal width="100%" delay={0.3} className="flex gap-8 pt-8 border-t border-white/5 w-full justify-center lg:justify-start">
-                                <div className="flex flex-wrap items-center pl-4">
-                                    {[
-                                        { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-                                        { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
-                                        { name: 'React', url: 'https://react.dev/' },
-                                        { name: 'Next.js', url: 'https://nextjs.org/' },
-                                        { name: 'React Native', url: 'https://reactnative.dev/' }
-                                    ].map((tech, index) => (
-                                        <motion.a
-                                            key={index}
-                                            href={tech.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            initial={{ opacity: 0, x: -50, rotate: -10 }}
-                                            animate={{ opacity: 1, x: 0, rotate: 0 }}
-                                            transition={{
-                                                duration: 0.5,
-                                                delay: 0.5 + (index * 0.1),
-                                                type: "spring",
-                                                stiffness: 100
-                                            }}
-                                            whileHover={{
-                                                scale: 1.2,
-                                                zIndex: 100,
-                                                y: -10,
-                                                rotate: Math.random() < 0.5 ? -2 : 2,
-                                                transition: { duration: 0.2 }
-                                            }}
-                                            className="px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-cyan-400 text-xs font-bold shadow-lg shadow-black/50 relative hover:shadow-cyan-500/20 -ml-4 first:ml-0 cursor-pointer block"
-                                            style={{ zIndex: 10 - index }}
-                                        >
-                                            {tech.name}
-                                        </motion.a>
-                                    ))}
-                                    <span className="text-xs text-slate-500 font-medium ml-4">Tech Stack</span>
+                                <div className="flex flex-col items-center lg:items-start gap-4">
+                                    <span className="text-xs text-slate-500 font-medium uppercase tracking-wider">Tech Stack</span>
+                                    <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 lg:gap-0">
+                                        {[
+                                            { name: 'JavaScript', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+                                            { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+                                            { name: 'React', url: 'https://react.dev/' },
+                                            { name: 'Next.js', url: 'https://nextjs.org/' },
+                                            { name: 'React Native', url: 'https://reactnative.dev/' }
+                                        ].map((tech, index) => (
+                                            <motion.a
+                                                key={index}
+                                                href={tech.url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                initial={{ opacity: 0, x: -50, rotate: -10 }}
+                                                animate={{ opacity: 1, x: 0, rotate: 0 }}
+                                                transition={{
+                                                    duration: 0.5,
+                                                    delay: 0.5 + (index * 0.1),
+                                                    type: "spring",
+                                                    stiffness: 100
+                                                }}
+                                                whileHover={{
+                                                    scale: 1.2,
+                                                    zIndex: 100,
+                                                    y: -10,
+                                                    rotate: Math.random() < 0.5 ? -2 : 2,
+                                                    transition: { duration: 0.2 }
+                                                }}
+                                                className="px-4 py-2 rounded-xl bg-slate-900 border border-white/10 text-cyan-400 text-xs font-bold shadow-lg shadow-black/50 relative hover:shadow-cyan-500/20 lg:-ml-4 lg:first:ml-0 cursor-pointer block"
+                                                style={{ zIndex: 10 - index }}
+                                            >
+                                                {tech.name}
+                                            </motion.a>
+                                        ))}
+                                    </div>
                                 </div>
                             </ScrollReveal>
                         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import BubbleMenu from './BubbleMenu';
 import { motion } from 'framer-motion';
 
@@ -42,27 +43,36 @@ const Navbar = () => {
     }, [displayText, isDeleting, loopNum]);
 
     const [isVisible, setIsVisible] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const lastScrollY = React.useRef(0); // Use Ref to track scroll position without triggering re-renders/loop re-binding
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const location = useLocation(); // Hook to detect route changes
+
+    // Ensure Navbar is visible whenever route changes
+    useEffect(() => {
+        setIsVisible(true);
+        lastScrollY.current = window.scrollY; // Sync ref
+    }, [location]);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            if (isMenuOpen) {
+            // Always visible if menu is open or at the very top
+            if (isMenuOpen || currentScrollY < 10) {
                 setIsVisible(true);
+                lastScrollY.current = currentScrollY;
                 return;
             }
 
-            if (currentScrollY > lastScrollY && currentScrollY > 50) {
-                // Scrolling down
+            if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+                // Scrolling down -> Hide
                 setIsVisible(false);
-            } else {
-                // Scrolling up
+            } else if (currentScrollY < lastScrollY.current) {
+                // Scrolling up -> Show
                 setIsVisible(true);
             }
 
-            setLastScrollY(currentScrollY);
+            lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -70,7 +80,7 @@ const Navbar = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [lastScrollY, isMenuOpen]);
+    }, [isMenuOpen]);
 
     const items = [
         {
