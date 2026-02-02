@@ -139,7 +139,7 @@ const Projects = () => {
             </ScrollReveal>
 
             {/* Grid */}
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div layout className="grid grid-cols-1 gap-12 w-full mx-auto">
                 <AnimatePresence>
                     {filteredProjects.map((project) => (
                         <motion.div
@@ -151,61 +151,72 @@ const Projects = () => {
                             transition={{ duration: 0.3 }}
                         >
                             <ParallaxCard className="h-full">
-                                <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-cyan-500/10 hover:border-cyan-500/30 transition-all h-full flex flex-col">
-                                    {/* Image */}
-                                    <div className="aspect-video relative overflow-hidden bg-slate-800 shrink-0">
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-80" />
+                                <div className="bg-slate-900 border border-white/5 rounded-2xl overflow-hidden group hover:shadow-2xl hover:shadow-cyan-500/10 hover:border-cyan-500/30 transition-all h-full md:h-[28rem]">
+                                    <div className="flex flex-col md:flex-row h-full">
+                                        {/* Image Side */}
+                                        <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden shrink-0">
+                                            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10 md:hidden" />
+                                            <img
+                                                src={project.image}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100"
+                                            />
 
-                                        {/* Overlay Links */}
-                                        <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-900/60 backdrop-blur-sm">
-                                            {project.liveLink && (
-                                                <a
-                                                    href={project.liveLink}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="p-3 bg-cyan-500 rounded-full text-white hover:bg-cyan-400 transform hover:scale-110 transition-all shadow-lg"
-                                                    title="Live Demo"
-                                                >
-                                                    <ExternalLink size={20} />
-                                                </a>
-                                            )}
-                                            {project.githubLink && (
-                                                <a
-                                                    href={project.githubLink}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="p-3 bg-slate-800 border border-white/20 rounded-full text-white hover:bg-white hover:text-slate-900 transform hover:scale-110 transition-all shadow-lg"
-                                                    title="Source Code"
-                                                >
-                                                    <Github size={20} />
-                                                </a>
-                                            )}
+                                            {/* Overlay Links (Show on hover for desktop, absolute position) */}
+                                            <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-slate-900/60 backdrop-blur-sm z-20">
+                                                {project.liveLink && (
+                                                    <a
+                                                        href={project.liveLink}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="p-3 bg-cyan-500 rounded-full text-white hover:bg-cyan-400 transform hover:scale-110 transition-all shadow-lg"
+                                                        title="Live Demo"
+                                                    >
+                                                        <ExternalLink size={20} />
+                                                    </a>
+                                                )}
+                                                {project.githubLink && (
+                                                    <a
+                                                        href={project.githubLink}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="p-3 bg-slate-800 border border-white/20 rounded-full text-white hover:bg-white hover:text-slate-900 transform hover:scale-110 transition-all shadow-lg"
+                                                        title="Source Code"
+                                                    >
+                                                        <Github size={20} />
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    {/* Content */}
-                                    <div className="p-6 flex flex-col grow">
-                                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-slate-400 text-sm mb-6 line-clamp-3">
-                                            {project.description}
-                                        </p>
+                                        {/* Content Side */}
+                                        <div className="p-6 md:p-8 flex flex-col justify-center w-full md:w-1/2 relative z-20 bg-slate-900">
+                                            <div className={`inline-block px-3 py-1 text-xs font-bold rounded-full mb-3 backdrop-blur-md w-fit ${project.category === 'web' ? 'bg-cyan-500/20 text-cyan-400' :
+                                                project.category === 'mobile' ? 'bg-purple-500/20 text-purple-400' :
+                                                    'bg-green-500/20 text-green-400'
+                                                }`}>
+                                                {project.category === 'web' ? 'Web App' :
+                                                    project.category === 'mobile' ? 'Mobile App' : 'Full Stack'}
+                                            </div>
 
-                                        <div className="flex flex-wrap gap-2 mt-auto">
-                                            {project.technologies.map(tech => (
-                                                <span
-                                                    key={tech}
-                                                    className="text-xs font-semibold px-2 py-1 bg-slate-800 text-slate-300 rounded border border-white/5"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
+                                            <h3 className="text-2xl font-bold text-white mb-3">
+                                                {project.title}
+                                            </h3>
+
+                                            <p className="text-slate-400 text-base mb-6 leading-relaxed">
+                                                {project.description}
+                                            </p>
+
+                                            <div className="flex flex-wrap gap-2 text-slate-500 text-sm font-medium">
+                                                {project.technologies.map(tech => (
+                                                    <span
+                                                        key={tech}
+                                                        className="bg-slate-800 px-2 py-1 rounded text-slate-300"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

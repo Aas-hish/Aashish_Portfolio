@@ -223,28 +223,28 @@ const Home = () => {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 gap-12 w-full mx-auto">
                         {/* Project 1 */}
                         <ParallaxCard className="h-full">
-                            <SpotlightCard className="p-0 bg-slate-900 group h-full border border-white/10">
-                                <div className="aspect-video relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10 opacity-60" />
-                                    <img
-                                        src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                        alt="Hospital Website"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div className="p-6 relative z-20 -mt-12">
-                                    <div className="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-bold rounded-full mb-3 backdrop-blur-md">Web App</div>
-                                    <h3 className="text-xl font-bold mb-2 text-white">RVS Hospital Platform</h3>
-                                    <p className="text-slate-400 text-sm mb-4">Complete patient management system with appointment booking and doctor profiles.</p>
-                                    <div className="flex gap-2 text-slate-500 text-sm">
-                                        <span>HTML</span>
-                                        <span>•</span>
-                                        <span>Tailwind</span>
-                                        <span>•</span>
-                                        <span>JS</span>
+                            <SpotlightCard className="p-0 bg-slate-900 group h-full md:h-[28rem] border border-white/10">
+                                <div className="flex flex-col md:flex-row h-full">
+                                    <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10 md:hidden" />
+                                        <img
+                                            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                                            alt="Hospital Website"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
+                                    </div>
+                                    <div className="p-6 md:p-8 flex flex-col justify-center w-full md:w-1/2 relative z-20">
+                                        <div className="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-400 text-xs font-bold rounded-full mb-3 backdrop-blur-md w-fit">Web App</div>
+                                        <h3 className="text-2xl font-bold mb-3 text-white">RVS Hospital Platform</h3>
+                                        <p className="text-slate-400 text-base mb-6 leading-relaxed">Complete patient management system with appointment booking and doctor profiles.</p>
+                                        <div className="flex flex-wrap gap-2 text-slate-500 text-sm font-medium">
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">HTML</span>
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">Tailwind</span>
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">JS</span>
+                                        </div>
                                     </div>
                                 </div>
                             </SpotlightCard>
@@ -252,23 +252,24 @@ const Home = () => {
 
                         {/* Project 2 */}
                         <ParallaxCard className="h-full">
-                            <SpotlightCard className="p-0 bg-slate-900 group h-full border border-white/10">
-                                <div className="aspect-video relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10 opacity-60" />
-                                    <img
-                                        src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                        alt="Task App"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div className="p-6 relative z-20 -mt-12">
-                                    <div className="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold rounded-full mb-3 backdrop-blur-md">Mobile App</div>
-                                    <h3 className="text-xl font-bold mb-2 text-white">Student Task Manager</h3>
-                                    <p className="text-slate-400 text-sm mb-4">Productivity app with goal tracking, streaks, and local data persistence.</p>
-                                    <div className="flex gap-2 text-slate-500 text-sm">
-                                        <span>React Native</span>
-                                        <span>•</span>
-                                        <span>AsyncStorage</span>
+                            <SpotlightCard className="p-0 bg-slate-900 group h-full md:h-[28rem] border border-white/10">
+                                <div className="flex flex-col md:flex-row h-full">
+                                    <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden order-1 md:order-2">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10 md:hidden" />
+                                        <img
+                                            src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                                            alt="Task App"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
+                                    </div>
+                                    <div className="p-6 md:p-8 flex flex-col justify-center w-full md:w-1/2 relative z-20 order-2 md:order-1">
+                                        <div className="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold rounded-full mb-3 backdrop-blur-md w-fit">Mobile App</div>
+                                        <h3 className="text-2xl font-bold mb-3 text-white">Student Task Manager</h3>
+                                        <p className="text-slate-400 text-base mb-6 leading-relaxed">Productivity app with goal tracking, streaks, and local data persistence.</p>
+                                        <div className="flex gap-2 text-slate-500 text-sm font-medium">
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">React Native</span>
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">AsyncStorage</span>
+                                        </div>
                                     </div>
                                 </div>
                             </SpotlightCard>
@@ -276,23 +277,24 @@ const Home = () => {
 
                         {/* Project 3 */}
                         <ParallaxCard className="h-full">
-                            <SpotlightCard className="p-0 bg-slate-900 group h-full border border-white/10">
-                                <div className="aspect-video relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10 opacity-60" />
-                                    <img
-                                        src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                                        alt="Finance App"
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div className="p-6 relative z-20 -mt-12">
-                                    <div className="inline-block px-3 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded-full mb-3 backdrop-blur-md">Full Stack</div>
-                                    <h3 className="text-xl font-bold mb-2 text-white">Expense Tracker</h3>
-                                    <p className="text-slate-400 text-sm mb-4">Shared finance management with real-time room chat and budget tracking.</p>
-                                    <div className="flex gap-2 text-slate-500 text-sm">
-                                        <span>Firebase</span>
-                                        <span>•</span>
-                                        <span>React Native</span>
+                            <SpotlightCard className="p-0 bg-slate-900 group h-full md:h-[28rem] border border-white/10">
+                                <div className="flex flex-col md:flex-row h-full">
+                                    <div className="w-full md:w-1/2 h-64 md:h-full relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent z-10 md:hidden" />
+                                        <img
+                                            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+                                            alt="Finance App"
+                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
+                                    </div>
+                                    <div className="p-6 md:p-8 flex flex-col justify-center w-full md:w-1/2 relative z-20">
+                                        <div className="inline-block px-3 py-1 bg-green-500/20 text-green-400 text-xs font-bold rounded-full mb-3 backdrop-blur-md w-fit">Full Stack</div>
+                                        <h3 className="text-2xl font-bold mb-3 text-white">Expense Tracker</h3>
+                                        <p className="text-slate-400 text-base mb-6 leading-relaxed">Shared finance management with real-time room chat and budget tracking.</p>
+                                        <div className="flex gap-2 text-slate-500 text-sm font-medium">
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">Firebase</span>
+                                            <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">React Native</span>
+                                        </div>
                                     </div>
                                 </div>
                             </SpotlightCard>
