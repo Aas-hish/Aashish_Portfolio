@@ -15,10 +15,10 @@ const AnimatedRoutes = () => {
         <AnimatePresence mode="wait">
             <Routes location={location} key={location.pathname}>
                 <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-                <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
-                <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />
-                <Route path="/skills" element={<PageWrapper><Skills /></PageWrapper>} />
-                <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+                <Route path="/about-me" element={<PageWrapper><About /></PageWrapper>} />
+                <Route path="/my-projects" element={<PageWrapper><Projects /></PageWrapper>} />
+                <Route path="/my-skills" element={<PageWrapper><Skills /></PageWrapper>} />
+                <Route path="/my-contact" element={<PageWrapper><Contact /></PageWrapper>} />
             </Routes>
         </AnimatePresence>
     );

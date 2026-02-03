@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import BubbleMenu from './BubbleMenu';
 import { motion } from 'framer-motion';
 
@@ -91,37 +91,37 @@ const Navbar = () => {
             hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
         },
         {
-            label: 'About',
-            href: '/about',
-            ariaLabel: 'About',
+            label: 'About Me',
+            href: '/about-me',
+            ariaLabel: 'About Me',
             rotation: 8,
             hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
         },
         {
-            label: 'Projects',
-            href: '/projects',
-            ariaLabel: 'Projects',
+            label: 'My Projects',
+            href: '/my-projects',
+            ariaLabel: 'My Projects',
             rotation: 8,
             hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
         },
         {
-            label: 'Skills',
-            href: '/skills',
-            ariaLabel: 'Skills',
+            label: 'My Skills',
+            href: '/my-skills',
+            ariaLabel: 'My Skills',
             rotation: -5,
             hoverStyles: { bgColor: '#ef4444', textColor: '#ffffff' }
         },
         {
-            label: 'Contact',
-            href: '/contact',
-            ariaLabel: 'Contact',
+            label: 'My Contact',
+            href: '/my-contact',
+            ariaLabel: 'My Contact',
             rotation: -8,
             hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
         }
     ];
 
     const TypingLogo = (
-        <span className="flex items-center" style={{ fontWeight: 700, fontSize: '1.2rem', color: '#fff' }}>
+        <Link to="/" className="flex items-center" style={{ fontWeight: 700, fontSize: '1.2rem', color: '#fff' }}>
             {displayText}
             <motion.span
                 initial={{ opacity: 0 }}
@@ -131,7 +131,7 @@ const Navbar = () => {
             >
                 _
             </motion.span>
-        </span>
+        </Link>
     );
 
     return (

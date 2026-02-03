@@ -51,13 +51,13 @@ const Home = () => {
                             <ScrollReveal width="100%" delay={0.2} className="mb-12">
                                 <div className="flex flex-row flex-nowrap gap-4 justify-center lg:justify-start">
                                     <Link
-                                        to="/contact"
+                                        to="/my-contact"
                                         className="px-9 py-5 bg-cyan-400 text-slate-900 font-bold text-base tracking-wide hover:bg-cyan-300 transition-all hover:scale-105 rounded-full shadow-lg shadow-cyan-400/20"
                                     >
                                         Let's Talk
                                     </Link>
                                     <Link
-                                        to="/projects"
+                                        to="/my-projects"
                                         className="px-9 py-5 border border-white/10 bg-white/5 text-white font-bold text-base tracking-wide hover:bg-white/10 transition-all hover:scale-105 rounded-full backdrop-blur-md flex items-center gap-2"
                                     >
                                         View Work <ArrowRight size={18} />
@@ -218,7 +218,7 @@ const Home = () => {
                             </ScrollFloat>
                             <p className="text-slate-400">Some of my recent work</p>
                         </ScrollReveal>
-                        <Link to="/projects" className="hidden md:flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium group">
+                        <Link to="/my-projects" className="hidden md:flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium group">
                             View All <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                         </Link>
                     </div>
