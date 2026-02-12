@@ -72,10 +72,10 @@ const Footer = () => {
                             <ScrollReveal delay={0.1} className="col-span-1">
                                 <h4 className="text-white font-semibold mb-4">Quick Links</h4>
                                 <ul className="space-y-2">
-                                    <li><Link to="/about" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">About Me</Link></li>
-                                    <li><Link to="/projects" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">Projects</Link></li>
-                                    <li><Link to="/skills" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">Skills</Link></li>
-                                    <li><Link to="/contact" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">Contact</Link></li>
+                                    <li><Link to="/about-me" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">About Me</Link></li>
+                                    <li><Link to="/my-projects" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">Projects</Link></li>
+                                    <li><Link to="/my-skills" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">Skills</Link></li>
+                                    <li><Link to="/my-contact" className="text-slate-400 hover:text-cyan-400 transition-colors inline-block hover:translate-x-1 duration-300">Contact</Link></li>
                                 </ul>
                             </ScrollReveal>
 
