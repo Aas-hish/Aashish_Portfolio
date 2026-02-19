@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, HelpCircle, ChevronDown } from 'lucide-react';
 import ScrollReveal from '../components/ScrollReveal';
@@ -51,6 +52,38 @@ const FAQItem = ({ question, answer }) => {
 };
 
 const Contact = () => {
+    const form = useRef();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null);
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        const formData = new FormData(form.current);
+        const templateParams = {
+            name: `${formData.get('first_name')} ${formData.get('last_name')}`,
+            email: formData.get('email'),
+            message: formData.get('message'),
+        };
+
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        emailjs
+            .send('service_brcs31i', 'template_z87ypfh', templateParams, '5Xn90w00Khi8RazZu')
+            .then(
+                () => {
+                    setSubmitStatus('success');
+                    setIsSubmitting(false);
+                    form.current.reset();
+                },
+                (error) => {
+                    setSubmitStatus('error');
+                    setIsSubmitting(false);
+                    console.error('FAILED...', error.text);
+                },
+            );
+    };
 
     const faqData = [
         {
@@ -179,32 +212,72 @@ const Contact = () => {
                         >
                             Send Message
                         </ScrollFloat>
-                        <form className="space-y-6">
+                        <form ref={form} onSubmit={sendEmail} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label className="block text-sm font-medium text-slate-400 mb-2">First Name</label>
-                                    <input type="text" className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="John" />
+                                    <input
+                                        type="text"
+                                        name="first_name"
+                                        required
+                                        className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                                        placeholder="John"
+                                    />
                                 </div>
                                 <div>
                                     <label className="block text-sm font-medium text-slate-400 mb-2">Last Name</label>
-                                    <input type="text" className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Doe" />
+                                    <input
+                                        type="text"
+                                        name="last_name"
+                                        required
+                                        className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                                        placeholder="Doe"
+                                    />
                                 </div>
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-slate-400 mb-2">Email</label>
-                                <input type="email" className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="john@example.com" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    required
+                                    className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                                    placeholder="john@example.com"
+                                />
                             </div>
 
                             <div>
                                 <label className="block text-sm font-medium text-slate-400 mb-2">Message</label>
-                                <textarea rows="4" className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Tell me about your project..."></textarea>
+                                <textarea
+                                    name="message"
+                                    required
+                                    rows="4"
+                                    className="w-full bg-slate-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                                    placeholder="Tell me about your project..."
+                                ></textarea>
                             </div>
 
-                            <button type="submit" className="w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg font-bold text-white hover:shadow-lg hover:shadow-cyan-500/20 transition-all hover:scale-[1.02] flex items-center justify-center gap-2">
-                                <Send size={20} />
-                                Send Message
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className={`w-full py-4 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg font-bold text-white hover:shadow-lg hover:shadow-cyan-500/20 transition-all hover:scale-[1.02] flex items-center justify-center gap-2 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            >
+                                {isSubmitting ? (
+                                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                ) : (
+                                    <>
+                                        <Send size={20} />
+                                        Send Message
+                                    </>
+                                )}
                             </button>
+                            {submitStatus === 'success' && (
+                                <p className="text-green-400 text-center mt-2">Message sent successfully!</p>
+                            )}
+                            {submitStatus === 'error' && (
+                                <p className="text-red-400 text-center mt-2">Failed to send message. Please try again.</p>
+                            )}
                         </form>
                     </div>
                 </ScrollReveal>
